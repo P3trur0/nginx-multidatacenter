@@ -4,15 +4,15 @@ More details about the demo can be found on my Medium blog: https://medium.com/@
 
 The demo provides an Nginx setup to serve a passive/active service in a multi-datacenter/geo-replicated scenario.
 
-Using this simple setup we can route our clients to the closest datacenter, depending on their location, and if a data center, or a
-container, will not be more available, we can use a backup server on another datacenter/geographic location.
-Obviously the responsibility to replicate data will be on charge of other systems.
+Using this simple setup we can route our clients to the closest datacenter, depending on their location, and if a datacenter, or a
+container, will not be available anymore, we can use a backup server on another datacenter/geographical location.
+Obviously the responsibility to replicate data will be on charge of the other systems.
 
 
-In this demo, we will start an Nginx load balancer that redirects the client that performs request without header to a datacenter
+In this demo, we will start an Nginx load balancer that redirects the client that performs requests without headers to a datacenter
 and the client that uses the header "X-SERVER-SELECT" with value "two" to another datacenter.
 
-When a container on a datacenter, on entire datacenter, will not be more available, the load balancer will redirect the service
+When a container on a datacenter, on entire datacenter, will not be available anymore, the load balancer will redirect the service
 invocation to the backup node.
 
 
@@ -20,9 +20,9 @@ To run the demo execute:
 
 	$ docker-compose up
 
-and then visit http://localhost:9090 the string "Test ONE" will appear to you.
+and then browsing http://localhost:9090 you'll read "**Test ONE**" string.
 
-Then try to contact using the header "X-SERVER-SELECT" with value "two":
+Then try to contact using the header "**X-SERVER-SELECT**" with value "two":
 
 	$ curl --header "X-Server-Select:two" http://localhost:9090
 
